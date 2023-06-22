@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = {"/", "/home"})
 	public String home() {
 		// 여기에서 서버단에서 필요한 작업을 수행한다.
 		
@@ -23,6 +23,11 @@ public class HomeController {
 	@RequestMapping(value = "/home3")
 	public String home3() {
 		return "app/home/home3";
+	}
+	
+	@RequestMapping(value = "/main")
+	public String main() {
+		return "app/xdmin/main";
 	}
 
 }
