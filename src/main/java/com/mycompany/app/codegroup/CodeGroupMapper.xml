@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- mapper > namespace : 매퍼의 이름을 적어두는 곳, 전체 mapper 중에서 유일한 값을 사용하여야 한다.
+						  보통 해당 파일의 path로 해두며, Dao에서도 namespace 이름을 동일하게 설정해야 함. -->
+<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">
+
+	<!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, 상기된 내용과 동일하게 경로 위치로 해둔다. -->
+    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    										<!-- ㄴ select 결과를 받을 객체 -->
+    
+    <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
+    <select id="selectList" resultMap="resultMapObj">
+    	SELECT
+    		seq,
+    		name
+    	FROM codeGroup  
+    </select>
+    
+
+</mapper>    
