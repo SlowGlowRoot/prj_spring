@@ -12,11 +12,27 @@
     
     <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
     <select id="selectList" resultMap="resultMapObj">
-    	SELECT
-    		seq,
-    		name
-    	FROM codeGroup  
+    	SELECT *
+    	FROM
+    		codeGroup
+    	WHERE
+    		name LIKE CONCAT('%',#{shKeyword},'%')
     </select>
     
+    <select id="selectOne" resultMap="resultMapObj">
+    	SELECT *
+    	FROM
+    		codeGroup
+    	WHERE
+    		seq = #{seq}
+    </select>
+    
+    <select id="selectTwo" resultMap="resultMapObj">
+    	SELECT *
+    	FROM
+    		codeGroup
+    	WHERE
+    		name = #{name}
+    </select>
 
 </mapper>    

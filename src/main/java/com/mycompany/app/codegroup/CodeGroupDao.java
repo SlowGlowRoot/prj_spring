@@ -21,11 +21,16 @@ public class CodeGroupDao {
 	private static String namespace = "com.mycompany.app.codegroup.CodeGroupMapper";
 //  CodeGroup의 내용을 List 형태로 반환 (1개가 아닐 수도 있으니 List로 반환)
 	
-	public List<CodeGroup> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
+	public List<CodeGroup> selectList(CodeGroupVo vo){
+		return sqlSession.selectList(namespace + ".selectList", vo);
+		}
 	
-//	public List<CodeGroup> selectList(){ 
-//		return sqlSession.selectList(namespace + ".selectList", "");
-//	}
+	public CodeGroup selectOne(CodeGroupVo vo){
+		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo);
+		return codeGroup;
+		}
+	
+//	public List<CodeGroup> selectList() { return sqlSession.selectList(namespace + ".selectList", ""); }
 
 }
 
