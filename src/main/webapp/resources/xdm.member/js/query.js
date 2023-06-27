@@ -17,10 +17,10 @@ $(function(){
 
         }
 
-        if($("#user_id").val() == "xdmin" && $("#user_pw").val() == "mypw") {
+        if($("#user_id").val() == "xdmin" && $("#user_pw").val() == "123") {
             
             alert("로그인 성공!");
-            location.href = "/codeGroupList";
+            window.location.href = "/codeGroupList";
 
         } else {
 
