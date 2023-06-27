@@ -19,5 +19,15 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	public CodeGroup selectOne(CodeGroupVo vo) {
 		return dao.selectOne(vo);
 	};
+	
+	@Override
+	public int update(CodeGroup dto) {
+		return dao.update(dto);
+	}
+
+	@Override
+	public int delete(CodeGroup dto) {
+		return dao.delete(dto);
+	}
 
 }

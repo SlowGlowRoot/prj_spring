@@ -27,12 +27,21 @@
     		seq = #{seq}
     </select>
     
-    <select id="selectTwo" resultMap="resultMapObj">
-    	SELECT *
+    <update id="update">
+    	UPDATE codeGroup
+    	SET
+    		name = #{name}
+		<!-- WHERE 구문 꼭꼭꼭꼭꼭꼭꼭반드시 넣기 -->
+    	WHERE
+    		seq = #{seq}
+    </update>
+    
+    <delete id="delete">
+    	DELETE
     	FROM
     		codeGroup
     	WHERE
-    		name = #{name}
-    </select>
+    		seq = #{seq}
+    </delete>
 
 </mapper>    

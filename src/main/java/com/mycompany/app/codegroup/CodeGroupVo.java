@@ -8,6 +8,7 @@ public class CodeGroupVo {
 	// seq는 Integer 대신 String 형으로
 	private String seq;
 	private String name;
+	private int delNy;
 	
 //	------------------------------
 	
@@ -34,6 +35,12 @@ public class CodeGroupVo {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(int delNy) {
+		this.delNy = delNy;
 	}
 	
 }

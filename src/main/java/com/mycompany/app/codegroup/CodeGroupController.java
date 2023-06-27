@@ -19,15 +19,15 @@ public class CodeGroupController {
 //	public String codeGroupList(Model model) {
 	public String codeGroupList(CodeGroupVo vo, Model model) {
 		
-		System.out.println("vo.getShOption() : " + vo.getShOption());
-		System.out.println("vo.getShKeyword() : " + vo.getShKeyword());
+//		System.out.println("vo.getShOption() : " + vo.getShOption());
+//		System.out.println("vo.getShKeyword() : " + vo.getShKeyword());
 	
 		List<CodeGroup> list = service.selectList(vo);
 		
 		//	앞의 "list"는 jsp 파일에서 정보를 받기 위한 변수명 (jsp에서 사용), 뒷쪽 list는 List<CodeGroup> list = service.selectList();에서의 list
 		model.addAttribute("list", list);
 		
-		return "codeGroupList";
+		return "usr/infra/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupForm")
@@ -37,7 +37,25 @@ public class CodeGroupController {
 		
 		model.addAttribute("item", codeGroup);
 		
-		return "codeGroupForm";
+		return "usr/infra/codeGroupForm";
 		
 	};
+	
+	@RequestMapping("/codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroup dto) {
+		System.out.println("codeGroupUpdt");
+		
+		service.update(dto);
+		
+		return "redirect:/usr/infra/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupDel")
+	public String codeGroupDel(CodeGroup dto) {
+		
+		service.delete(dto);
+		
+		return "redirect:/usr/infra/codeGroupList";
+	}
+	
 }

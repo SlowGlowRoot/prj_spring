@@ -23,6 +23,8 @@ codeGroupList.jsp
 	<input type="text" name="shKeyword">
 	
 	<button type="button" class="btn btn-primary" id="btn">Search</button>
+	<button type="button" class="btn btn-danger" id="btn_del">Delete</button>
+	<button type="button" class="btn btn-success" id="btn_add">Add</button>
 </form>
 
 <br>
@@ -43,7 +45,7 @@ codeGroupList.jsp
 </c:choose>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" ></a>="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 // 	var form = $("form[name='formList']");
