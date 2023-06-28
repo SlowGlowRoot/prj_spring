@@ -23,8 +23,8 @@ codeGroupList.jsp
 	<input type="text" name="shKeyword">
 	
 	<button type="button" class="btn btn-primary" id="btn">Search</button>
-	<button type="button" class="btn btn-danger" id="btn_del">Delete</button>
-	<button type="button" class="btn btn-success" id="btn_add">Add</button>
+<!-- 	<button type="button" class="btn btn-danger" id="btn_del">Delete</button> -->
+<!-- 	<button type="button" class="btn btn-success" id="btn_add">Add</button> -->
 </form>
 
 <br>

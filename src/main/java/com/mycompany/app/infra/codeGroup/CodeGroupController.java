@@ -1,4 +1,4 @@
-package com.mycompany.app.codegroup;
+package com.mycompany.app.infra.codeGroup;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class CodeGroupController {
 		//	앞의 "list"는 jsp 파일에서 정보를 받기 위한 변수명 (jsp에서 사용), 뒷쪽 list는 List<CodeGroup> list = service.selectList();에서의 list
 		model.addAttribute("list", list);
 		
-		return "usr/infra/codeGroupList";
+		return "xdm/infra/code/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupForm")
@@ -37,7 +37,7 @@ public class CodeGroupController {
 		
 		model.addAttribute("item", codeGroup);
 		
-		return "usr/infra/codeGroupForm";
+		return "xdm/infra/code/codeGroup/codeGroupForm";
 		
 	};
 	
@@ -47,7 +47,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		
-		return "redirect:/usr/infra/codeGroupList";
+		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupDel")
@@ -55,7 +55,7 @@ public class CodeGroupController {
 		
 		service.delete(dto);
 		
-		return "redirect:/usr/infra/codeGroupList";
+		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
 	}
 	
 }

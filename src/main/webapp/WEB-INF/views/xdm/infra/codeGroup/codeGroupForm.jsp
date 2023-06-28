@@ -10,7 +10,7 @@
 	#btn_wrap {width: 184px; height: 30px; margin: auto; margin-top: 30px;}
 	input {display: block; margin: auto; margin-top: 30px;}
 	button {float: left;}
-	#btn_delete, #btn_save {margin-left: 16px;}
+	#btn_delete, #btn_save {margin-left: 10px;}
 </style>
   
 <div name="form" method="post">
@@ -18,8 +18,8 @@
  		<input type="text" name="seq" id="seq" placeholder="Input seq" readonly value="<c:out value = "${item.seq}"/>">
  		<input type="text" name="name" id="name" placeholder="Input name" value="<c:out value = "${item.name}"/>">
  		<div id="btn_wrap">
-	 		<button type="button" id="btn_list">List</button>
-	 		<button type="button" id="btn_delete">Delete</button>
+	 		<button type="button" id="btn_del">Delete</button>
+	 		<button type="button" id="btn_uel">Uelete</button>
 	 		<button type="button" id="btn_save">Save</button>
 	 	</div>
 	</form>
@@ -29,7 +29,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script>
 
-	$("#btn_list").on("click", function() {
+	$("#btn_uel").on("click", function() {
 		location.href = "/codeGroupList";
 	});
 
@@ -41,7 +41,7 @@
 	
 	});
 	
-	$("#btn_delete").on("click", function() {
+	$("#btn_del").on("click", function() {
 		
 			$("form[name=form]").attr("action", "/codeGroupDel").submit();
 			alert("정보가 정상적으로 삭제되었습니다.")

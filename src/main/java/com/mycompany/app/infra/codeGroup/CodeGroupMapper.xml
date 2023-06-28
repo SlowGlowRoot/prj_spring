@@ -4,26 +4,35 @@
 
 <!-- mapper > namespace : 매퍼의 이름을 적어두는 곳, 전체 mapper 중에서 유일한 값을 사용하여야 한다.
 						  보통 해당 파일의 path로 해두며, Dao에서도 namespace 이름을 동일하게 설정해야 함. -->
-<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">
+<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
 
 	<!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, 상기된 내용과 동일하게 경로 위치로 해둔다. -->
-    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
     										<!-- ㄴ select 결과를 받을 객체 -->
+    										
+    <sql id="seqName">
+    	seq
+    	,name
+    </sql>
     
     <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
     <select id="selectList" resultMap="resultMapObj">
-    	SELECT *
+    	SELECT
+			<!-- include의 refid가 sql의 id와 동일하면 연결됨. -->
+			<include refid="seqName" />
     	FROM
     		codeGroup
-    	WHERE
-    		name LIKE CONCAT('%',#{shKeyword},'%')
+    	WHERE 1=1
+    		<!-- 처음 실행 시 shKryword의 값이 null로 실행되지 않도록 하는 if문 -->
+    		<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
     </select>
     
     <select id="selectOne" resultMap="resultMapObj">
-    	SELECT *
+    	SELECT
+    		<include refid="seqName" />
     	FROM
     		codeGroup
-    	WHERE
+    	WHERE 1=1
     		seq = #{seq}
     </select>
     
@@ -32,7 +41,7 @@
     	SET
     		name = #{name}
 		<!-- WHERE 구문 꼭꼭꼭꼭꼭꼭꼭반드시 넣기 -->
-    	WHERE
+    	WHERE 1=1
     		seq = #{seq}
     </update>
     
@@ -40,8 +49,14 @@
     	DELETE
     	FROM
     		codeGroup
-    	WHERE
+    	WHERE 1=1
     		seq = #{seq}
     </delete>
+    
+    <update id="uelete">
+    	
+    	
+    	
+    </update>
 
 </mapper>    

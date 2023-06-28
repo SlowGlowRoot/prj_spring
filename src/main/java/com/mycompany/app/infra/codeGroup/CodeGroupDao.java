@@ -1,4 +1,4 @@
-package com.mycompany.app.codegroup;
+package com.mycompany.app.infra.codeGroup;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class CodeGroupDao {
 	
 //	Dao의 namespace가 mapper의 주소를 찾아가야하므로 동일하게 작성해야 함.
 	
-	private static String namespace = "com.mycompany.app.codegroup.CodeGroupMapper";
+	private static String namespace = "com.mycompany.app.infra.codegroup.CodeGroupMapper";
 //  CodeGroup의 내용을 List 형태로 반환 (1개가 아닐 수도 있으니 List로 반환)
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){
