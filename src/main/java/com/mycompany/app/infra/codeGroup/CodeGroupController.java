@@ -46,7 +46,7 @@ public class CodeGroupController {
 		System.out.println("codeGroupUpdt");
 		
 		service.update(dto);
-		
+//		return은 기존의 jsp파일 위치를 알려주는 것이지만 redirect를 붙이면 localhost 뒤에 붙는다.
 		return "redirect:/codeGroupList";
 	}
 	
