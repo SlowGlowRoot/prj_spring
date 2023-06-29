@@ -6,27 +6,33 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   
-<div name="form" method="post">
-	<form name="form">
- 		<input type="text" name="seq" id="seq" placeholder="Input seq" readonly value="<c:out value = "${item.seq}"/>">
- 		<input type="text" name="name" id="name" placeholder="Input name" value="<c:out value = "${item.name}"/>">
- 		<div id="btn_wrap">
-	 		<button type="button" class="btn btn-danger" id="btn_del">Delete</button>
-	 		<button type="button" class="btn btn-warning" id="btn_uel">Uelete</button>
-	 		<button type="button" class="btn btn-primary" id="btn_save">Save</button>
-	 	</div>
-	</form>
-</div>
+11: <c:out value="${param.seq}"/>
+
+<form name="form" method="post">
+	<%@include file="includeElementId.jsp"%>
+	<input type="text" name="name" id="name" value="<c:out value="${item.name}"/>">
+	
+	<c:choose>
+		<c:when test="${empty item.seq}">
+			<button type="button" class="btn btn-primary" id="btnInst">save</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
+			<button type="button" class="btn btn-warning" id="btnUelete">Uelete</button>
+			<button type="button" class="btn btn-primary" id="btnSave">save</button>
+		</c:otherwise>	
+	</c:choose>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script>
 
-	$("#btn_uel").on("click", function() {
+	$("#btnUelete").on("click", function() {
 		location.href = "/codeGroupList";
 	});
 
-	$("#btn_save").on("click", function() {
+	$("#btnSave").on("click", function() {
 		
 	//	$("form[name=formList]").attr("method", "get");
 		$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
@@ -34,7 +40,7 @@
 	
 	});
 	
-	$("#btn_del").on("click", function() {
+	$("#btnDelete").on("click", function() {
 		
 			$("form[name=form]").attr("action", "/codeGroupDel").submit();
 			alert("정보가 정상적으로 삭제되었습니다.")

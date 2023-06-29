@@ -37,7 +37,7 @@ public class CodeGroupController {
 		
 		model.addAttribute("item", codeGroup);
 		
-		return "xdm/infra/code/codeGroup/codeGroupForm";
+		return "xdm/infra/codeGroup/codeGroupForm";
 		
 	};
 	
@@ -47,7 +47,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		
-		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+		return "redirect:/xdm/infra/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupDel")
@@ -55,7 +55,7 @@ public class CodeGroupController {
 		
 		service.delete(dto);
 		
-		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+		return "redirect:/xdm/infra/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupUel")

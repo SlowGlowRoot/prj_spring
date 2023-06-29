@@ -44,6 +44,8 @@ codeGroupList.jsp
 	</c:otherwise>
 </c:choose>
 
+<button type="button" class="btn btn-primary" id="btnAdd">Add</button>
+
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -54,8 +56,10 @@ codeGroupList.jsp
 // 		자기 자신을 호출 해준다.
 		$("form[name=formList]").attr("action", "/codeGroupList").submit();
 		$("form[name=formList]").attr("method", "get");
-
-// 		alert("asdasd")
+	});
+	
+	$("#btnAdd").on("click", function(){
+		location.href = "/codeGroupForm";	
 	});
 
 </script>
