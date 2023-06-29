@@ -47,7 +47,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		
-		return "redirect:/xdm/infra/codeGroup/codeGroupList";
+		return "redirect:/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupDel")
@@ -55,7 +55,7 @@ public class CodeGroupController {
 		
 		service.delete(dto);
 		
-		return "redirect:/xdm/infra/codeGroup/codeGroupList";
+		return "redirect:/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupUel")
@@ -63,7 +63,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		
-		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+		return "redirect:/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupInst")
@@ -71,7 +71,7 @@ public class CodeGroupController {
 		
 		service.insert(dto);
 		
-		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+		return "redirect:/codeGroupList";
 	}
 	
 }
