@@ -1,7 +1,7 @@
 $(function(){
 
-    $("form").submit(function(e){
-        e.preventDefault
+    $("#login-form-submit").click(function(e){
+//        e.preventDefault
 
         if($("#user_id").val() == "") {
 
@@ -19,8 +19,8 @@ $(function(){
 
         if($("#user_id").val() == "xdmin" && $("#user_pw").val() == "123") {
             
-            alert("로그인 성공!");
-            window.location.href = "/codeGroupList";
+            alert("어서오세요 XDMIN 님");
+            location.href = '/indexUsrView';
 
         } else {
 

@@ -4,15 +4,16 @@
 
 <!-- mapper > namespace : 매퍼의 이름을 적어두는 곳, 전체 mapper 중에서 유일한 값을 사용하여야 한다.
 						  보통 해당 파일의 path로 해두며, Dao에서도 namespace 이름을 동일하게 설정해야 함. -->
-<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
+<mapper namespace="com.mycompany.app.infra.codeGroup.CodeGroupMapper">
 
-	<!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, 상기된 내용과 동일하게 경로 위치로 해둔다. -->
-    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
+    <!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, 상기된 내용과 동일하게 경로 위치로 해둔다. -->
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codeGroup.CodeGroup"></resultMap>
     										<!-- ㄴ select 결과를 받을 객체 -->
     										
     <sql id="seqName">
     	seq
     	,name
+    	,delNy
     </sql>
     
     <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
@@ -23,17 +24,17 @@
     	FROM
     		codeGroup
     	WHERE 1=1
-    		<!-- 처음 실행 시 shKryword의 값이 null로 실행되지 않도록 하는 if문 -->
-    		<if test="shKeyword != null and !shKeyword.equals('')"> AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
+    		<!-- 처음 실행 시 shKeyword의 값이 null로 실행되지 않도록 하는 if문 -->
+    		<if test="shKeyword != null and !shKeyword.equals('')">AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
     </select>
     
     <select id="selectOne" resultMap="resultMapObj">
     	SELECT
-    		<include refid="seqName" />
+			<include refid="seqName" />
     	FROM
     		codeGroup
     	WHERE 1=1
-    		seq = #{seq}
+    		AND seq = #{seq}
     </select>
     
     <update id="update">
@@ -41,7 +42,7 @@
     	SET
     		name = #{name}
 		<!-- WHERE 구문 꼭꼭꼭꼭꼭꼭꼭반드시 넣기 -->
-    	WHERE 1=1
+    	WHERE
     		seq = #{seq}
     </update>
     
@@ -49,14 +50,26 @@
     	DELETE
     	FROM
     		codeGroup
-    	WHERE 1=1
+    	WHERE
     		seq = #{seq}
     </delete>
     
     <update id="uelete">
-    	
-    	
-    	
+    	UPDATE codeGroup
+   		SET
+   			delNy = 1
+		WHERE
+			seq = #{seq}
     </update>
-
+    
+    <insert id="insert">
+    INSERT INTO codeGroup (
+    	name
+    	,delNy
+    ) values (
+ 		#{name}
+ 		,0
+    ) 
+    </insert>
+    
 </mapper>    

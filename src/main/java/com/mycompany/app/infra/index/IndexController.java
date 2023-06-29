@@ -6,22 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 	
-	@RequestMapping(value = {"/", "/home"})
+	@RequestMapping(value = {"/", "/home", "/index", "/biographyUsrView"})
+//	@RequestMapping("/")
 	public String home() {
-		return "home";
+		return "xdm/infra/index/index";
 	}
 	
-	@RequestMapping("/xdmLogin")
+	@RequestMapping("/LoginXdmForm")
 	public String xdmMember() {
-		return "xdm/member";
+		return "xdm/infra/member/member";
 	}
-	
-
-	@RequestMapping("/biographyUsrView")
-	public String biographyUsrView() {
-		return "usr/infra/biography/biographyUsrView";
-	}
-	
 	
 	@RequestMapping("/indexUsrView")
 	public String indexUsrView() {

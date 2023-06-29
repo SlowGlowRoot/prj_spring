@@ -5,22 +5,15 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<style>
-	#form_wrap {margin: auto; margin-top: 100px}
-	#btn_wrap {width: 184px; height: 30px; margin: auto; margin-top: 30px;}
-	input {display: block; margin: auto; margin-top: 30px;}
-	button {float: left;}
-	#btn_delete, #btn_save {margin-left: 10px;}
-</style>
   
 <div name="form" method="post">
 	<form name="form">
  		<input type="text" name="seq" id="seq" placeholder="Input seq" readonly value="<c:out value = "${item.seq}"/>">
  		<input type="text" name="name" id="name" placeholder="Input name" value="<c:out value = "${item.name}"/>">
  		<div id="btn_wrap">
-	 		<button type="button" id="btn_del">Delete</button>
-	 		<button type="button" id="btn_uel">Uelete</button>
-	 		<button type="button" id="btn_save">Save</button>
+	 		<button type="button" class="btn btn-danger" id="btn_del">Delete</button>
+	 		<button type="button" class="btn btn-warning" id="btn_uel">Uelete</button>
+	 		<button type="button" class="btn btn-primary" id="btn_save">Save</button>
 	 	</div>
 	</form>
 </div>

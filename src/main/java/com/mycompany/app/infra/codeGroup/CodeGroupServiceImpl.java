@@ -30,4 +30,14 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return dao.delete(dto);
 	}
 
+	@Override
+	public int uelete(CodeGroup dto) {
+		return dao.uelete(dto);
+	}
+
+	@Override
+	public int insert(CodeGroup dto) {
+		return dao.insert(dto);
+	}
+
 }

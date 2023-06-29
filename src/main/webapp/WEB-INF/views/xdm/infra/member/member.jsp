@@ -13,14 +13,14 @@
 </head>
 <body>
     <div class="login-wrapper">
-        <h2> <a href="/home"><i class="fa-solid fa-arrow-left"></i></a> ADMIN</h2>
+        <h2> <a href="/biographyUsrView"><i class="fa-solid fa-arrow-left"></i></a> ADMIN</h2>
         <form method="post" id="login-form">
-            <input type="text" name="userName" id="user_id" placeholder="ID">
-            <input type="password" name="userPassword" id="user_pw" placeholder="PW">
+            <input type="text" name="userName" id="user_id" placeholder="ID  (xdmin)">
+            <input type="password" name="userPassword" id="user_pw" placeholder="PW  (123)">
             <label for="remember-check">
                 <!-- <input type="checkbox" id="remember-check"> <span>아이디 저장하기</span> -->
             </label>
-            <input type="submit" value="Login" id="login-form-submit">
+            <input type="button" value="Login" id="login-form-submit">
         </form>
     </div>
 </body>

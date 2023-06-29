@@ -13,7 +13,7 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 //	localhost(127.0.0.1:80) 뒤에 붙는 것
-	@RequestMapping("/codeGroupList")
+	@RequestMapping("/codeGroupXdmList")
 	
 //	Controller에서 jsp 파일로 정보를 가져오기 위해서 Model을 사용
 //	public String codeGroupList(Model model) {
@@ -27,7 +27,7 @@ public class CodeGroupController {
 		//	앞의 "list"는 jsp 파일에서 정보를 받기 위한 변수명 (jsp에서 사용), 뒷쪽 list는 List<CodeGroup> list = service.selectList();에서의 list
 		model.addAttribute("list", list);
 		
-		return "xdm/infra/code/codeGroup/codeGroupList";
+		return "xdm/infra/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupForm")
@@ -54,6 +54,22 @@ public class CodeGroupController {
 	public String codeGroupDel(CodeGroup dto) {
 		
 		service.delete(dto);
+		
+		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupUel")
+	public String codeGroupUel(CodeGroup dto) {
+		
+		service.update(dto);
+		
+		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupInst")
+	public String codeGroupInst(CodeGroup dto) {
+		
+		service.insert(dto);
 		
 		return "redirect:/xdm/infra/code/codeGroup/codeGroupList";
 	}
