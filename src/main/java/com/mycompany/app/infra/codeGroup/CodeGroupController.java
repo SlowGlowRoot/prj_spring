@@ -47,7 +47,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 //		return은 기존의 jsp파일 위치를 알려주는 것이지만 redirect를 붙이면 localhost 뒤에 붙는다.
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupDel")
@@ -55,7 +55,7 @@ public class CodeGroupController {
 		
 		service.delete(dto);
 		
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupUel")
@@ -63,7 +63,7 @@ public class CodeGroupController {
 		
 		service.update(dto);
 		
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupInst")
@@ -71,7 +71,7 @@ public class CodeGroupController {
 		
 		service.insert(dto);
 		
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 }
