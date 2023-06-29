@@ -14,7 +14,7 @@
 	
 	<c:choose>
 		<c:when test="${empty item.seq}">
-			<button type="button" class="btn btn-primary" id="btnInst">save</button>
+			<button type="button" class="btn btn-primary" id="btnInsert">save</button>
 		</c:when>
 		<c:otherwise>
 			<button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
@@ -41,11 +41,13 @@
 	});
 	
 	$("#btnDelete").on("click", function() {
-		
-			$("form[name=form]").attr("action", "/codeGroupDel").submit();
-			alert("정보가 정상적으로 삭제되었습니다.")
-		
-		});
+		$("form[name=form]").attr("action", "/codeGroupDel").submit();
+		alert("정보가 정상적으로 삭제되었습니다.")
+	});
+	
+	$("#btnInsert").on("click", function(){
+	 	$("form[name=form]").attr("action", "/codeGroupInst").submit();
+	});
 
 
 </script>
