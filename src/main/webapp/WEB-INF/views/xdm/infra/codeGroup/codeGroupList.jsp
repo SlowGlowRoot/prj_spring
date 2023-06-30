@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<link rel="stylesheet" type="text/css" href="/resources/template/niceAdmin/assets/css/style.css">
+
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
 codeGroupList.jsp
@@ -39,7 +42,8 @@ codeGroupList.jsp
 	<!-- forEach는 향산된 for문과 비슷, "${list}"는 Controller에서 정보를 받는 변수, var="list"는 그걸 저장하는 변수 -->
 		<c:forEach items="${list}" var="list" varStatus="status">
 			<c:out value="${list.seq}"></c:out>
-			<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out><br></a>
+			<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out></a>
+			<c:out value="${list.delNy}"><br></c:out>
 		</c:forEach>
 	</c:otherwise>
 </c:choose>

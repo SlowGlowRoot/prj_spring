@@ -6,20 +6,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 	
+	// 첫 화면 (사용자, 관리자)
 	@RequestMapping(value = {"/", "/home", "/index", "/biographyUsrView"})
 //	@RequestMapping("/")
 	public String home() {
 		return "xdm/infra/index/index";
 	}
 	
+	// 관리자 로그인
 	@RequestMapping("/LoginXdmForm")
 	public String xdmMember() {
 		return "xdm/infra/member/member";
 	}
+
 	
-	@RequestMapping("/indexUsrView")
-	public String indexUsrView() {
-		return "usr/infra/index/indexUsrView";
+	// 관리자 대쉬보드
+	@RequestMapping("/indexXdmView")
+	public String indexXdmView() {
+		return "xdm/infra/index/indexXdmView";
 	}
 
 }

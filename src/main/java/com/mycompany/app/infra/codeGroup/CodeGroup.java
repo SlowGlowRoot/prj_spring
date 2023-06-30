@@ -9,6 +9,7 @@ public class CodeGroup {
 
 	private String seq;
 	private String name;
+	private int delNy;
 
 //	-----
 
@@ -27,5 +28,15 @@ public class CodeGroup {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getDelNy() {
+		return delNy;
+	}
+
+	public void setDelNy(int delNy) {
+		this.delNy = delNy;
+	}
+	
+	
 
 }

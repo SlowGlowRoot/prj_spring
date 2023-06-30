@@ -9,7 +9,17 @@
 11: <c:out value="${param.seq}"/>
 
 <form name="form" method="post">
-	<%@include file="includeElementId.jsp"%>
+<%-- 	<%@include file="includeElementId.jsp"%> --%>
+	
+	<c:choose>
+		<c:when test="${empty item.seq}">
+			<input type="text" id="seq" disabled="disabled" placeholder="Auto increment">
+		</c:when>
+		<c:otherwise>
+			<input type="text" name="seq" id="seq" readonly value="<c:out value="${item.seq}"/>">
+		</c:otherwise>
+	</c:choose>
+	
 	<input type="text" name="name" id="name" value="<c:out value="${item.name}"/>">
 	
 	<c:choose>
@@ -30,23 +40,30 @@
 
 	$("#btnUelete").on("click", function() {
 		location.href = "/codeGroupList";
+// 		location.href = "/codeGroupXdmList";
 	});
 
 	$("#btnSave").on("click", function() {
 		
 	//	$("form[name=formList]").attr("method", "get");
-		$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
+		$("form[name=form]").attr("action", "/codeGroupXdmUpdt").submit();
 		alert("수정된 내용이 정상적으로 저장되었습니다.")
 	
 	});
 	
 	$("#btnDelete").on("click", function() {
-		$("form[name=form]").attr("action", "/codeGroupDel").submit();
-		alert("정보가 정상적으로 삭제되었습니다.")
+		var askAgain = confirm('정말 삭제하시겠습니까?');
+		
+		if(askAgain) {
+			$("form[name=form]").attr("action", "/codeGroupXdmDel").submit();
+			alert("정보가 정상적으로 삭제되었습니다.")
+		} else {
+            
+        }
 	});
 	
 	$("#btnInsert").on("click", function(){
-	 	$("form[name=form]").attr("action", "/codeGroupInst").submit();
+	 	$("form[name=form]").attr("action", "/codeGroupXdmInst").submit();
 	});
 
 

@@ -32,5 +32,13 @@
             <button class="btn btn_manager" id="btn_xdm"><span>관 리 자</span></button>
         </div>
     </div>
+    
+    <script type="text/javascript">
+	   $(function(){
+	   	$("#btn_xdm").on("click", function() {
+	   			location.href = "/LoginXdmForm";
+	   		});
+	   });
+    </script>
 </body>
 </html>
