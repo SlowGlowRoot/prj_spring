@@ -538,7 +538,7 @@
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Seq(#)</th>
                     <th scope="col">Name</th>
                     <th scope="col">DelNy</th>
 <!--                     <th scope="col">Age</th> -->
