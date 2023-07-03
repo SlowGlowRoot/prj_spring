@@ -558,13 +558,13 @@
 							
 							<tr>
 								<th scope="row">
-									<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>
+									<c:out value="${list.seq}"></c:out>
 								</th>
 								<td>
-									<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out></a>
+									<a href="codeGroupXdmForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out></a>
 								</td>
 								<td>
-									<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.delNy}"></c:out><br></a>
+									<c:out value="${list.delNy}"></c:out><br>
 								</td>
 							</tr>
 								
@@ -574,14 +574,17 @@
 					
                 </tbody>
               </table>
+              <div class="row mb-3">
+					    <div class="offset-md-11 col-sm-10">
+					      <button type="submit" class="btn btn-primary" id="btnAdd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					    </div>
+					  </div>
               <!-- End Table with stripped rows -->
-
-            </div>
+            </div>    
           </div>
-
         </div>
       </div>
-    </section>
+    </section>	
 
   </main><!-- End #main -->
 
@@ -614,6 +617,11 @@
 
   <!-- Template Main JS File -->
   <script src="/resources/template/niceAdmin/assets/js/main.js"></script>
+  <script type="text/javascript">
+  	$("#btnAdd").on("click", function(){
+		location.href = "/codeGroupXdmForm";
+	});
+  </script>
 
 </body>
 

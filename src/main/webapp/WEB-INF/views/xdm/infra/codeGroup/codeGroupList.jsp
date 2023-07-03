@@ -23,9 +23,10 @@ codeGroupList.jsp
 	    <option value="5">Female</option>
 	</select>
 	
-	<input type="text" name="shKeyword">
+	<input type="text" name="shKeyword" value="<c:out value="${vo.shKeyword}"/>">
 	
 	<button type="button" class="btn btn-primary" id="btn">Search</button>
+	<button type="button" class="btn btn-secondary" id="btnInit">INIT</button>
 <!-- 	<button type="button" class="btn btn-danger" id="btn_del">Delete</button> -->
 <!-- 	<button type="button" class="btn btn-success" id="btn_add">Add</button> -->
 </form>
@@ -35,7 +36,7 @@ codeGroupList.jsp
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
-			<td class="text-center" colspan="9">There is no data!</td>
+			<td class="text-center" colspan="9">There is no data!<br></td>
 		</tr>	
 	</c:when>
 	<c:otherwise>
@@ -43,7 +44,7 @@ codeGroupList.jsp
 		<c:forEach items="${list}" var="list" varStatus="status">
 			<c:out value="${list.seq}"></c:out>
 			<a href="codeGroupForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out></a>
-			<c:out value="${list.delNy}"><br></c:out>
+			<c:out value="${list.delNy}"></c:out><br>
 		</c:forEach>
 	</c:otherwise>
 </c:choose>
@@ -64,6 +65,10 @@ codeGroupList.jsp
 	
 	$("#btnAdd").on("click", function(){
 		location.href = "/codeGroupForm";	
+	});
+	
+	$("#btnInit").on("click", function(){
+		location.href = "/";	
 	});
 
 </script>

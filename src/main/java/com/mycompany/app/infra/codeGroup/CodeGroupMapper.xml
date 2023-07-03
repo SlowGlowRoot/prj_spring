@@ -6,7 +6,7 @@
 						  보통 해당 파일의 path로 해두며, Dao에서도 namespace 이름을 동일하게 설정해야 함. -->
 <mapper namespace="com.mycompany.app.infra.codeGroup.CodeGroupMapper">
 
-    <!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, 상기된 내용과 동일하게 경로 위치로 해둔다. -->
+    <!-- resultMap > type : 해당 DTO의 풀네임을 적어두는 곳, DTO를 선언한 파일 경로 위치로 해둔다. -->
     <resultMap id="resultMapObj" type="com.mycompany.app.infra.codeGroup.CodeGroup"></resultMap>
     										<!-- ㄴ select 결과를 받을 객체 -->
     										

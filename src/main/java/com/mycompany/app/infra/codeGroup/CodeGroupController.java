@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -42,36 +43,42 @@ public class CodeGroupController {
 	};
 	
 	@RequestMapping("/codeGroupXdmUpdt")
-	public String codeGroupUpdt(CodeGroup dto) {
-		System.out.println("codeGroupUpdt");
+	public String codeGroupXdmUpdt(CodeGroup dto) {
+//		System.out.println("codeGroupUpdt");
 		
 		service.update(dto);
 //		return은 기존의 jsp파일 위치를 알려주는 것이지만 redirect를 붙이면 localhost 주소 뒤에 붙는 경로다.
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupXdmDel")
-	public String codeGroupDel(CodeGroup dto) {
+	public String codeGroupXdmDel(CodeGroup dto) {
 		service.delete(dto);
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupXdmUel")
-	public String codeGroupUel(CodeGroup dto) {
-		service.update(dto);
-		return "redirect:/codeGroupList";
+	public String codeGroupXdmUel(CodeGroup dto) {
+		System.out.println("CodeGroupController에서 객체 Uelete의 Mapping은 실행되었습니다.");
+		service.uelete(dto);
+		return "redirect:/codeGroupXdmList";
 	}
 	
 	@RequestMapping("/codeGroupXdmInst")
-	public String codeGroupInst(CodeGroup dto) {
+	public String codeGroupXdmInst(CodeGroup dto) {
 		service.insert(dto);
-		return "redirect:/codeGroupList";
+		return "redirect:/codeGroupXdmList";
 	}
 	
+//	==========================================================================
+	
 	@RequestMapping("/codeGroupList")
-	public String codeGroupList(CodeGroupVo vo, Model model) {
+	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
+		
+		vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
+//		model.addAttribute("vo", vo);
 		return "xdm/infra/codeGroup/codeGroupList";
 	}
 	
@@ -82,5 +89,30 @@ public class CodeGroupController {
 		return "xdm/infra/codeGroup/codeGroupForm";
 		
 	};
+	
+	@RequestMapping("/codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroup dto) {
+		System.out.println("codeGroupUpdt");
+		service.update(dto);
+		return "redirect:/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupDel")
+	public String codeGroupDel(CodeGroup dto) {
+		service.delete(dto);
+		return "redirect:/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupUel")
+	public String codeGroupUel(CodeGroup dto) {
+		service.update(dto);
+		return "redirect:/codeGroupList";
+	}
+	
+	@RequestMapping("/codeGroupInst")
+	public String codeGroupInst(CodeGroup dto) {
+		service.insert(dto);
+		return "redirect:/codeGroupList";
+	}
 	
 }

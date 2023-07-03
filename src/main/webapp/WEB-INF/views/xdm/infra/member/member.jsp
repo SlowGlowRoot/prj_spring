@@ -26,7 +26,12 @@
     <script type="text/javascript">
     
 	$("#login-form-submit").on("click", function() {
-		location.href = "/indexXdmView";
+		if ( $("#user_id").val() == "asd" && $("#user_pw").val() == "" ) {
+			alert("어서오세요. XDMIN 님")
+			location.href = "/codeGroupList";
+		} else {
+			location.href = "/indexXdmView";
+		}
 	});
     
     </script>

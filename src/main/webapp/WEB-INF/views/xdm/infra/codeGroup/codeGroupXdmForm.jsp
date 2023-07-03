@@ -534,33 +534,75 @@
               <h5 class="card-title">General Form Elements</h5>
 
               <!-- General Form Elements -->
-              <form>
+              <form name="form" method="post">
+                
+                <c:choose>
+					<c:when test="${empty item.seq}">
+						<div class="row mb-3">
+		                  <label for="inputText" class="col-sm-2 col-form-label">Seq</label>
+		                  <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="seq" id="seq" disabled="disabled" placeholder="Auto increment">
+		                  </div>
+		                </div>
+					</c:when>
+					<c:otherwise>
+						<div class="row mb-3">
+		                  <label for="inputText" class="col-sm-2 col-form-label">Seq</label>
+		                  <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="seq" id="seq" readonly value="<c:out value="${item.seq}"/>">
+		                  </div>
+		                </div>
+					</c:otherwise>
+				</c:choose>
+               
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Seq</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="name" id="name" value="<c:out value="${item.name}"/>">
                   </div>
                 </div>
-                <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">delNy</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label"></label>
-                  <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
-					<button type="button" class="btn btn-warning" id="btnUelete">Uelete</button>
-                  </div>
-                </div>
+                
+				<c:choose>
+					<c:when test="${empty item.seq}">
+		                <div class="row mb-3">
+		                  <label for="inputText" class="col-sm-2 col-form-label">DelNy</label>
+		                  <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="delNy" id="delNy" disabled="disabled" placeholder="0">
+		                  </div>
+		                </div>
+					</c:when>
+					<c:otherwise>
+		                <div class="row mb-3">
+		                  <label for="inputText" class="col-sm-2 col-form-label">DelNy</label>
+		                  <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="delNy" id="delNy" readonly value="<c:out value="${item.delNy}"/>">
+		                  </div>
+		                </div>
+					</c:otherwise>
+				</c:choose>
+             
+                <c:choose>
+					<c:when test="${empty item.seq}">
+						<div class="row mb-3">
+		                  <label class="col-sm-2 col-form-label"></label>
+		                  <div class="col-sm-10">
+		                    <button type="button" class="btn btn-secondary" id="btnList">List</button>
+		                    <button type="submit" class="btn btn-primary" id="btnInsert">Save</button>
+		                  </div>
+		                </div>
+					</c:when>
+					<c:otherwise>
+						<div class="row mb-3">
+		                  <label class="col-sm-2 col-form-label"></label>
+		                  <div class="col-sm-10">
+		                  	<button type="button" class="btn btn-secondary" id="btnList">List</button>
+		                    <button type="submit" class="btn btn-primary" id="btnUpdate">Save</button>
+		                    <button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
+							<button type="submit" class="btn btn-warning" id="btnUelete">Uelete</button>
+		                  </div>
+		                </div>
+					</c:otherwise>	
+				</c:choose>
 
               </form><!-- End General Form Elements -->
 
@@ -601,6 +643,42 @@
 
   <!-- Template Main JS File -->
   <script src="/resources/template/niceAdmin/assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+
+  	$("#btnList").on("click", function(){
+	 	location.href = "/codeGroupXdmList";
+	});
+  
+	$("#btnInsert").on("click", function(){
+	 	$("form[name=form]").attr("action", "/codeGroupXdmInst").submit();
+	});
+	
+	$("#btnUpdate").on("click", function() {
+		
+	//	$("form[name=formList]").attr("method", "get");
+		$("form[name=form]").attr("action", "/codeGroupXdmUpdt").submit();
+// 		alert("수정된 내용이 정상적으로 저장되었습니다.")
+	
+	});
+
+	$("#btnDelete").on("click", function() {
+		var askAgain = confirm('정말 삭제하시겠습니까?');
+		
+		if(askAgain) {
+			$("form[name=form]").attr("action", "/codeGroupXdmDel").submit();
+			alert("정보가 정상적으로 삭제되었습니다.")
+		} else {
+            
+        }
+	});
+	
+	$("#btnUelete").on("click", function() {
+		$("form[name=form]").attr("action", "/codeGroupXdmUel").submit();
+		alert("DelNy 값이 정상적으로 변경되었습니다.")
+	});
+	
+</script>
 
 </body>
 
