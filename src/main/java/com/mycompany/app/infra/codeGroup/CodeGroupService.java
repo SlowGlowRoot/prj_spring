@@ -17,5 +17,6 @@ public interface CodeGroupService {
 	
 	public List<CodeGroup> selectListUserInfo(CodeGroupVo vo);
 	public CodeGroup selectOneUserInfo(CodeGroupVo vo);
+	public int insertUserInfo(CodeGroup dto);
 	
 }

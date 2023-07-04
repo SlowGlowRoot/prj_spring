@@ -100,7 +100,7 @@
     	AS userDob
     </sql>
     
-    <sql id="userInfo">
+    <sql id="userInfoMin">
     	seq
 		,userEmail
 		,userPassword
@@ -112,9 +112,24 @@
 		,userCodeName
     </sql>
     
+    <sql id="userInfo">
+	    userEmail
+	    , userPassword
+	    , userNickname
+	    , userCountry
+	    , userFirstName
+	    , userMiddleName
+	    , userLastName
+	    , userDobYear
+	    , userDobMonth
+	    , userDobDate
+	    , userGender
+	    , userCodeName
+    </sql>
+    
     <select id="selectListUserInfo" resultMap="resultMapObj">
     	SELECT
-			<include refid="userInfo" />
+			<include refid="userInfoMin" />
 		FROM
 			userInfo
 		WHERE 1=1
@@ -122,11 +137,30 @@
     
     <select id="selectOneUserInfo" resultMap="resultMapObj">
     	SELECT
-			<include refid="userInfo" />
+			<include refid="userInfoMin" />
     	FROM
     		userInfo
     	WHERE 1=1
     		AND seq = #{seq}
     </select>
+    
+    <insert id="insertUserInfo" resultMap="resultMapObj">
+    INSERT INTO userInfo (
+    	<include refid="userInfo" />
+    ) values (
+ 		#{userEmail}
+	    , #{userPassword}
+	    , #{userNickname}
+	    , #{userCountry}
+	    , #{userFirstName}
+	    , #{userMiddleName}
+	    , #{userLastName}
+	    , #{userDobYear}
+	    , #{userDobMonth}
+	    , #{userDobDate}
+	    , #{userGender}
+	    , #{userCodeName}
+    ) 
+    </insert>
     
 </mapper>    

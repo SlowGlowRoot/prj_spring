@@ -54,4 +54,9 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	public CodeGroup selectOneUserInfo(CodeGroupVo vo) {
 		return dao.selectOneUserInfo(vo);
 	}
+
+	@Override
+	public int insertUserInfo(CodeGroup dto) {
+		return dao.insertUserInfo(dto);
+	}
 }

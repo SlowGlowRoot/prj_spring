@@ -143,4 +143,10 @@ public class CodeGroupController {
 		return "usr/infra/member/regUsrView";
 	};
 	
+	@RequestMapping("/regUsrView")
+	public String regUsrView(CodeGroup dto) {
+		service.insertUserInfo(dto);
+		return "redirect:/codeGroupXdmList";
+	}
+	
 }
