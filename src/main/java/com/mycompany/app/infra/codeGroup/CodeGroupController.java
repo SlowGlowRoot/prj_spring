@@ -136,8 +136,8 @@ public class CodeGroupController {
 		return "xdm/infra/codeGroup/codeGroupXdmList";
 	}
 	
-	@RequestMapping("/regUsrView")
-	public String regUsrView(CodeGroupVo vo, Model model){
+	@RequestMapping("/codeGroupRegForm")
+	public String codeGroupRegForm(CodeGroupVo vo, Model model){
 		CodeGroup codeGroup = service.selectOneUserInfo(vo);
 		model.addAttribute("regItem", codeGroup);
 		return "usr/infra/member/regUsrView";
