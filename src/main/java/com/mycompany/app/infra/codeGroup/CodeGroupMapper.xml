@@ -16,17 +16,29 @@
     	,delNy
     </sql>
     
+    <sql id ="selectCommon">
+   		FROM    
+	    	codeGroup
+		WHERE 1=1
+			<!-- 처음 실행 시 shKeyword의 값이 null로 실행되지 않도록 하는 if문 -->
+			<if test="shKeyword != null and !shKeyword.equals('')">AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
+    </sql>
+    
     <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
+    <select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		<!-- include의 refid가 sql의 id와 동일하면 연결됨. -->
+		<include refid="selectCommon" />
+	</select>
+    
     <select id="selectList" resultMap="resultMapObj">
-    	SELECT
-			<!-- include의 refid가 sql의 id와 동일하면 연결됨. -->
-			<include refid="seqName" />
-    	FROM
-    		codeGroup
-    	WHERE 1=1
-    		<!-- 처음 실행 시 shKeyword의 값이 null로 실행되지 않도록 하는 if문 -->
-    		<if test="shKeyword != null and !shKeyword.equals('')">AND name LIKE CONCAT('%',#{shKeyword},'%')</if>
-    </select>
+		SELECT aa.* FROM (   	
+	   		SELECT
+				<include refid="seqName" />
+	   			<include refid="selectCommon" />
+		) aa
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}	   			
+   	</select>
     
     <select id="selectOne" resultMap="resultMapObj">
     	SELECT
@@ -71,5 +83,50 @@
  		,0
     ) 
     </insert>
+    
+<!-- ========================================================================================== -->
+
+	<sql id="userName">
+    	(SELECT
+			IF(userInfo.userMiddleName = ""
+		    ,CONCAT(userFirstName, userLastName)
+		    ,CONCAT(userFirstName, " ", userMiddleName, " ", userLastName)))
+		 AS userName
+    </sql>
+    
+    <sql id="userDob">
+    	(SELECT
+    		CONCAT(userDobYear, userDobMonth, userDobDate))
+    	AS userDob
+    </sql>
+    
+    <sql id="userInfo">
+    	seq
+		,userEmail
+		,userPassword
+		,userNickname
+		,userCountry
+		,<include refid="userName" />
+		,<include refid="userDob" />
+		,userGender
+		,userCodeName
+    </sql>
+    
+    <select id="selectListUserInfo" resultMap="resultMapObj">
+    	SELECT
+			<include refid="userInfo" />
+		FROM
+			userInfo
+		WHERE 1=1
+    </select>
+    
+    <select id="selectOneUserInfo" resultMap="resultMapObj">
+    	SELECT
+			<include refid="userInfo" />
+    	FROM
+    		userInfo
+    	WHERE 1=1
+    		AND seq = #{seq}
+    </select>
     
 </mapper>    

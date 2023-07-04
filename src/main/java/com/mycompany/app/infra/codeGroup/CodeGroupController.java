@@ -74,12 +74,24 @@ public class CodeGroupController {
 	
 	@RequestMapping("/codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
-		
 		vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
-		List<CodeGroup> list = service.selectList(vo);
-		model.addAttribute("list", list);
-//		model.addAttribute("vo", vo);
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+		if(vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
 		return "xdm/infra/codeGroup/codeGroupList";
+		
+//		vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
+//
+//		List<CodeGroup> list = service.selectList(vo);
+//		model.addAttribute("list", list);
+////	model.addAttribute("vo", vo);
+//		return "xdm/infra/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping("/codeGroupForm")
@@ -114,5 +126,21 @@ public class CodeGroupController {
 		service.insert(dto);
 		return "redirect:/codeGroupList";
 	}
+	
+//	==========================================================================
+	
+@RequestMapping("/codeGroupRegList")
+	public String codeGroupRegList(CodeGroupVo vo, Model model) {
+		List<CodeGroup> list = service.selectListUserInfo(vo);
+		model.addAttribute("regList", list);
+		return "xdm/infra/codeGroup/codeGroupXdmList";
+	}
+	
+	@RequestMapping("/regUsrView")
+	public String regUsrView(CodeGroupVo vo, Model model){
+		CodeGroup codeGroup = service.selectOneUserInfo(vo);
+		model.addAttribute("regItem", codeGroup);
+		return "usr/infra/member/regUsrView";
+	};
 	
 }

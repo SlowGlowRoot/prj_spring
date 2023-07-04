@@ -408,6 +408,11 @@
               <i class="bi bi-circle"></i><span>Data Tables</span>
             </a>
           </li>
+          <li>
+            <a href="/memberXdmList">
+              <i class="bi bi-circle"></i><span>Member Tables</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Tables Nav -->
 

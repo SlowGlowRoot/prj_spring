@@ -18,6 +18,13 @@ public class IndexController {
 	public String xdmMember() {
 		return "xdm/infra/member/member";
 	}
+	
+	
+	// 사용자 로그인
+		@RequestMapping("/LoginUsrForm")
+		public String usrMember() {
+			return "usr/infra/member/member";
+		}
 
 	
 	// 관리자 대쉬보드

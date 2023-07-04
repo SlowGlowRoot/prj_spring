@@ -28,16 +28,22 @@
             </section>
         </div>
         <div id="wrap_portfolio">
-            <button class="btn btn_user"><span>사 용 자</span></button>
+            <button class="btn btn_user" id="btn_usr"><span>사 용 자</span></button>
             <button class="btn btn_manager" id="btn_xdm"><span>관 리 자</span></button>
         </div>
     </div>
     
     <script type="text/javascript">
 	   $(function(){
-	   	$("#btn_xdm").on("click", function() {
+	   		$("#btn_xdm").on("click", function() {
 	   			location.href = "/LoginXdmForm";
 	   		});
+	   });
+	   
+	   $(function(){
+		   	$("#btn_usr").on("click", function() {
+		   		location.href = "/LoginUsrForm";
+		   	});
 	   });
     </script>
 </body>

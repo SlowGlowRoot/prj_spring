@@ -14,13 +14,13 @@ codeGroupList.jsp
 
 <!-- <form name="formList"> -->
 <form name="formList" method="post">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+	
 	<select name="shOption">
 	    <option value="">--선택하세요--</option>
 	    <option value="1">1</option>
 	    <option value="2">2</option>
-	    <option value="3">3</option>
-	    <option value="4">Male</option>
-	    <option value="5">Female</option>
 	</select>
 	
 	<input type="text" name="shKeyword" value="<c:out value="${vo.shKeyword}"/>">
@@ -49,6 +49,36 @@ codeGroupList.jsp
 	</c:otherwise>
 </c:choose>
 
+
+<div class="container-fluid px-0 mt-2">
+    <div class="row">
+        <div class="col">
+            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+            <ul class="pagination justify-content-center mb-0">
+                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+<c:if test="${vo.startPage gt vo.pageNumToShow}">
+                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+</c:if>
+<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+	<c:choose>
+		<c:when test="${i.index eq vo.thisPage}">
+                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+		</c:when>
+		<c:otherwise>             
+                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>                
+<c:if test="${vo.endPage ne vo.totalPages}">                
+                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+</c:if>
+                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -70,5 +100,10 @@ codeGroupList.jsp
 	$("#btnInit").on("click", function(){
 		location.href = "/";	
 	});
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		$("form[name=formList]").attr("action", "codeGroupList").submit();
+	}
 
 </script>
