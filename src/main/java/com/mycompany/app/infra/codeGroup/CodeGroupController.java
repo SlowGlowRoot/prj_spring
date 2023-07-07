@@ -129,21 +129,33 @@ public class CodeGroupController {
 	
 //	==========================================================================
 	
-@RequestMapping("/codeGroupRegList")
-	public String codeGroupRegList(CodeGroupVo vo, Model model) {
+	
+	// 전체 회원정보 내용
+	@RequestMapping("/memberXdmList")
+	public String memberXdmList(CodeGroupVo vo, Model model) {
 		List<CodeGroup> list = service.selectListUserInfo(vo);
 		model.addAttribute("regList", list);
 		return "xdm/infra/codeGroup/codeGroupXdmList";
 	}
 	
-	@RequestMapping("/codeGroupRegForm")
-	public String codeGroupRegForm(CodeGroupVo vo, Model model){
+	// 단일 회원정보 내용
+	@RequestMapping("/memberXdmForm")
+	public String memberXdmForm(CodeGroupVo vo, Model model){
 		CodeGroup codeGroup = service.selectOneUserInfo(vo);
 		model.addAttribute("regItem", codeGroup);
-		return "usr/infra/member/regUsrView";
+		return "xdm/infra/codeGroup/codeGroupXdmList";
+	}
+	
+	// 회원정보 기입 (=회원가입)
+	@RequestMapping("/memberUsrView")
+	public String memberUsrView(CodeGroupVo vo, Model model){
+		CodeGroup codeGroup = service.selectOneUserInfo(vo);
+		model.addAttribute("regItem", codeGroup);
+		return "usr/infra/member/memberUsrView";
 	};
 	
-	@RequestMapping("/regUsrView")
+	// 회원 정보를 DB에 추가
+	@RequestMapping("/memberRegAdd")
 	public String regUsrView(CodeGroup dto) {
 		service.insertUserInfo(dto);
 		return "redirect:/codeGroupXdmList";

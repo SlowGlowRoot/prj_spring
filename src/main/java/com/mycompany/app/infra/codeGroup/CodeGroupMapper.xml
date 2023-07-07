@@ -144,7 +144,7 @@
     		AND seq = #{seq}
     </select>
     
-    <insert id="insertUserInfo" resultMap="resultMapObj">
+    <insert id="insertUserInfo">
     INSERT INTO userInfo (
     	<include refid="userInfo" />
     ) values (
