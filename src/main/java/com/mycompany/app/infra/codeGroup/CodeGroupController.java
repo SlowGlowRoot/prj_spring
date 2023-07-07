@@ -135,7 +135,7 @@ public class CodeGroupController {
 	public String memberXdmList(CodeGroupVo vo, Model model) {
 		List<CodeGroup> list = service.selectListUserInfo(vo);
 		model.addAttribute("regList", list);
-		return "xdm/infra/codeGroup/codeGroupXdmList";
+		return "xdm/infra/member/memberXdmList";
 	}
 	
 	// 단일 회원정보 내용
@@ -143,7 +143,7 @@ public class CodeGroupController {
 	public String memberXdmForm(CodeGroupVo vo, Model model){
 		CodeGroup codeGroup = service.selectOneUserInfo(vo);
 		model.addAttribute("regItem", codeGroup);
-		return "xdm/infra/codeGroup/codeGroupXdmList";
+		return "xdm/infra/member/memberXdmForm";
 	}
 	
 	// 회원정보 기입 (=회원가입)

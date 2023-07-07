@@ -56,5 +56,3 @@ public class CodeGroupDao {
 	public int insertUserInfo(CodeGroup dto) { return sqlSession.insert(namespace + ".insertUserInfo", dto); }
 
 }
-
-

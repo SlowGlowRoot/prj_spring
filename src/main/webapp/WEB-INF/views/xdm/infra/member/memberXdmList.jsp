@@ -544,10 +544,14 @@
                 <thead>
                   <tr>
                     <th scope="col">Seq(#)</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">PW</th>
+                    <th scope="col">Nickname</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Name</th>
-                    <th scope="col">DelNy</th>
-<!--                     <th scope="col">Age</th> -->
-<!--                     <th scope="col">Start Date</th> -->
+                    <th scope="col">DOB</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Codename(@)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -559,17 +563,35 @@
 							</tr>	
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${list}" var="list" varStatus="status">
+							<c:forEach items="${regList}" var="regList" varStatus="status">
 							
 							<tr>
 								<th scope="row">
-									<c:out value="${list.seq}"></c:out>
+									<c:out value="${regList.seq}"></c:out>
 								</th>
 								<td>
-									<a href="codeGroupXdmForm?seq=<c:out value="${list.seq}"/>"><c:out value="${list.name}"></c:out></a>
+									<a href="codeGroupXdmForm?seq=<c:out value="${regList.seq}"/>"><c:out value="${regList.userEmail}"></c:out></a>
 								</td>
 								<td>
-									<c:out value="${list.delNy}"></c:out><br>
+									<c:out value="${regList.userPassword}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userNickname}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userCountry}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userName}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userDob}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userGender}"></c:out><br>
+								</td>
+								<td>
+									<c:out value="${regList.userCodeName}"></c:out><br>
 								</td>
 							</tr>
 								
@@ -623,9 +645,9 @@
   <!-- Template Main JS File -->
   <script src="/resources/template/niceAdmin/assets/js/main.js"></script>
   <script type="text/javascript">
-  	$("#btnAdd").on("click", function(){
-		location.href = "/codeGroupXdmForm";
-	});
+//   	$("#btnAdd").on("click", function(){
+// 		location.href = "/codeGroupXdmForm";
+// 	});
   </script>
 
 </body>
