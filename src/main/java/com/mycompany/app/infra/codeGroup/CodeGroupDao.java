@@ -41,18 +41,5 @@ public class CodeGroupDao {
 	public int uelete(CodeGroup dto) { return sqlSession.update(namespace + ".uelete", dto); }
 	
 	public int insert(CodeGroup dto) { return sqlSession.insert(namespace + ".insert", dto); }
-	
-	
-	
-	public List<CodeGroup> selectListUserInfo(CodeGroupVo vo){
-		return sqlSession.selectList(namespace + ".selectListUserInfo", vo);
-		}
-	
-	public CodeGroup selectOneUserInfo(CodeGroupVo vo){
-		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOneUserInfo", vo);
-		return codeGroup;
-		}
-	
-	public int insertUserInfo(CodeGroup dto) { return sqlSession.insert(namespace + ".insertUserInfo", dto); }
 
 }

@@ -13,10 +13,4 @@ public interface CodeGroupService {
 	public int uelete(CodeGroup dto);
 	public int insert(CodeGroup dto);
 	
-	
-	
-	public List<CodeGroup> selectListUserInfo(CodeGroupVo vo);
-	public CodeGroup selectOneUserInfo(CodeGroupVo vo);
-	public int insertUserInfo(CodeGroup dto);
-	
 }

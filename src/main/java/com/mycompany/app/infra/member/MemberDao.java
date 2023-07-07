@@ -26,8 +26,6 @@ public class MemberDao {
 		return member;
 	}
 	
-	public int insertUserInfo(Member dto) {
-		return sqlMember.insert(namespace + ".selectListUserInfo", dto);
-	}
+	public int insertUserInfo(Member dto) { return sqlMember.insert(namespace + ".selectListUserInfo", dto); }
 	
 }

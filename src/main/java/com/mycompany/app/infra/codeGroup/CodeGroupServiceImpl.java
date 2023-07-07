@@ -44,19 +44,4 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	public int insert(CodeGroup dto) {
 		return dao.insert(dto);
 	}
-
-	@Override
-	public List<CodeGroup> selectListUserInfo(CodeGroupVo vo) {
-		return dao.selectListUserInfo(vo);
-	}
-
-	@Override
-	public CodeGroup selectOneUserInfo(CodeGroupVo vo) {
-		return dao.selectOneUserInfo(vo);
-	}
-
-	@Override
-	public int insertUserInfo(CodeGroup dto) {
-		return dao.insertUserInfo(dto);
-	}
 }
