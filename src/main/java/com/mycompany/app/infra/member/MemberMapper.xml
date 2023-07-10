@@ -33,17 +33,17 @@
     
     <sql id="userInfo">
 	    userEmail
-	    , userPassword
-	    , userNickname
-	    , userCountry
-	    , userFirstName
-	    , userMiddleName
-	    , userLastName
-	    , userDobYear
-	    , userDobMonth
-	    , userDobDate
-	    , userGender
-	    , userCodeName
+	    ,userPassword
+	    ,userNickname
+	    ,userCountry
+	    ,userFirstName
+	    ,userMiddleName
+	    ,userLastName
+	    ,userDobYear
+	    ,userDobMonth
+	    ,userDobDate
+	    ,userGender
+	    ,userCodeName
     </sql>
     
     <select id="selectListUserInfo" resultMap="resultMapObj">

@@ -12,20 +12,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> selectListUserInfo(MemberVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectListUserInfo(vo);
 	}
 
 	@Override
 	public Member selectOneUserInfo(MemberVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOneUserInfo(vo);
 	}
 
 	@Override
 	public int insertUserInfo(Member dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insertUserInfo(dto);
 	}
 
 }

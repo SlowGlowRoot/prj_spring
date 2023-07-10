@@ -2,6 +2,7 @@ package com.mycompany.app.infra.member;
 
 public class Member {
 
+	private String seq;
 	private String userEmail;
 	private String userPassword;
 	private String userNickname;
@@ -17,6 +18,12 @@ public class Member {
 	
 //	-----
 	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}

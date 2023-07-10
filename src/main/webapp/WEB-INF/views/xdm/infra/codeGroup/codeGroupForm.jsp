@@ -36,14 +36,34 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="/resources/validation/validation.js"></script>
 <script>
+
+	validationUpdate = function() {
+// 		if($.trim($("#name").val()) == "" || $.trim($("#name").val()) == null) {
+// 			alert("데이터를 입력해주세요.")
+// 			$("#name").focus();
+// 			return false;
+// 		} else {
+// // 			by pass
+// 		}
+		
+// 		alert(myRe.test($.trim($("#name").val())));
+
+		if(check($.trim($("#name").val())) == false) return false;
+	}
+	
+	validationInsert = function() {
+		if(validationUpdate() == false) return false;
+	}
 	
 	$("#btnInsert").on("click", function(){
+		if(validationInsert() == false) return false;
 	 	$("form[name=form]").attr("action", "/codeGroupInst").submit();
 	});
 
 	$("#btnUpdate").on("click", function() {
-		
+		if(validationInsert() == false) return false;
 	//	$("form[name=formList]").attr("method", "get");
 		$("form[name=form]").attr("action", "/codeGroupUpdt").submit();
 		alert("수정된 내용이 정상적으로 저장되었습니다.")
