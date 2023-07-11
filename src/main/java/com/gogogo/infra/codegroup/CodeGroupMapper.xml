@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gogogo.infra.codeGroup.CodeGroupMapper">
+
+	<resultMap id="resultMapObj" type="com.gogogo.infra.codeGroup.CodeGroup"></resultMap>
+	
+	<insert id="insertIfcg">
+		INSERT INTO infraCodeGroup (
+			ifcgName
+			,ifcgDelNy
+		) VALUES (
+			#{ifcgName}
+			,0
+		)
+	</insert>
+	
+	<select id="selectIfcg" resultMap="resultMapObj">
+		SELECT
+			ifcgSeq
+			,ifcgName
+			,ifcgDelNy
+		FROM
+			infraCodeGroup
+		WHERE 1=1
+    		AND ifcgSeq = #{ifcgSeq}
+	</select>
+	
+	<update id="updateIfcg">
+		UPDATE infraCodeGroup
+   		SET
+   			name = #{name}
+		WHERE
+			ifcgSeq = #{ifcgSeq}
+	</update>
+	
+	<delete id="deleteIfcg">
+    	DELETE
+    	FROM
+    		infraCodeGroup
+    	WHERE
+    		ifcgSeq = #{ifcgSeq}
+    </delete>
+	
+</mapper>

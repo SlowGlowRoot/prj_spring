@@ -25,7 +25,7 @@
     </sql>
     
     <!-- select 안의 내용 -> resultMap -> resultMap에서의 id -> type으로 옮겨감(DTO) -->
-    <select id="selectOneCount" resultType="Integer">
+    <select id="selectOneCount" resultType="resultMapObj">
 		SELECT count(*)
 		<!-- include의 refid가 sql의 id와 동일하면 연결됨. -->
 		<include refid="selectCommon" />
