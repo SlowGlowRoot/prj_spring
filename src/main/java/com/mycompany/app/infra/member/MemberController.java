@@ -41,7 +41,7 @@ public class MemberController {
 	@RequestMapping("/memberRegAdd")
 	public String regUsrView(Member dto) {
 		service.insertUserInfo(dto);
-		return "redirect:/codeGroupXdmList";
+		return "redirect:/memberXdmList";
 	}
 
 }

@@ -25,23 +25,42 @@
             <label for="remember-check">
 <!--                 <input type="checkbox" id="remember-check"> <span>아이디 저장하기</span> -->
             </label>
-            <input type="button" value="Login" id="login-form-submit">
+            <input type="button" value="Login" id="btnLogin">
         </form>
         <a href="/regUsrforgotId"><span>아이디 찾기</span></a>
 	    <a href="/regUsrforgotPw"><span>비밀번호 찾기</span></a>
-	    <a href="/regUsrView"><span>회원가입</span></a>
+	    <a href="/memberUsrView"><span>회원가입</span></a>
     </div>
     
     <script type="text/javascript">
     
-	$("#login-form-submit").on("click", function() {
-		if ( $("#user_id").val() == "asd" && $("#user_pw").val() == "" ) {	
-			alert("어서오세요. XDMIN 님")
-			location.href = "/codeGroupList";
-		} else {
-			location.href = "/indexXdmView";
-		}
-	});
+    $("#btnLogin").on("click", function(){
+    	
+    	if(validation() == false) return false;
+    	
+    	$.ajax({
+    		async: true 
+    		,cache: false
+    		,type: "post"
+    		/* ,dataType:"json" */
+    		,url: "/loginProc"
+    		/* ,data : $("#formLogin").serialize() */
+    		,data : { "user_id" : $("#user_id").val(),
+    			"user_pw" : $("#user_pw").val()}
+    		,success: function(response) {
+    			if(response.rt == "success") {
+    				alert(response.rtMember.ifmmName);
+    				location.href = "/";
+    			} else {
+    				alert("그런 회원 없습니다.");
+    			}
+    		}
+    		,error : function(jqXHR, textStatus, errorThrown){
+    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    		}
+    	});
+
+    });
     
     </script>
     

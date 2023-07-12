@@ -3,7 +3,7 @@
 
 <mapper namespace="com.mycompany.app.infra.member.MemberMapper">
 
-	<resultMap id="resultMapObj" type="com.mycompany.app.infra.member.Member"></resultMap>
+	<resultMap id="resultMapMember" type="com.mycompany.app.infra.member.Member"></resultMap>
 	
 	<sql id="userName">
     	(SELECT
@@ -46,7 +46,7 @@
 	    ,userCodeName
     </sql>
     
-    <select id="selectListUserInfo" resultMap="resultMapObj">
+    <select id="selectListUserInfo" resultMap="resultMapMember">
     	SELECT
 			<include refid="userInfo" />
 		FROM
@@ -54,7 +54,7 @@
 		WHERE 1=1
     </select>
     
-    <select id="selectOneUserInfo" resultMap="resultMapObj">
+    <select id="selectOneUserInfo" resultMap="resultMapMember">
     	SELECT
 			<include refid="userInfo" />
     	FROM
