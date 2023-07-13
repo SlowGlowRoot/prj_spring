@@ -581,7 +581,7 @@
               </table>
               <div class="row mb-3">
 					    <div class="offset-md-11 col-sm-10">
-					      <button type="submit" class="btn btn-primary" id="btnAdd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					      <button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
 					    </div>
 					  </div>
               <!-- End Table with stripped rows -->

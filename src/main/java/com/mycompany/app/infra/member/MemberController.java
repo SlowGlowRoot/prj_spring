@@ -17,19 +17,19 @@ public class MemberController {
 	@RequestMapping("/memberXdmList")
 	public String memberXdmList(MemberVo vo, Model model) {
 		List<Member> list = service.selectListUserInfo(vo);
-		model.addAttribute("regList", list);
+		model.addAttribute("memberList", list);
 		return "xdm/infra/member/memberXdmList";
 	}
 	
-	// 단일 회원정보 내용
+	// 관리자 사이트에서 보는 단일 회원정보 내용
 	@RequestMapping("/memberXdmForm")
 	public String memberXdmForm(MemberVo vo, Model model){
 		Member member = service.selectOneUserInfo(vo);
-		model.addAttribute("regItem", member);
+		model.addAttribute("memberItem", member);
 		return "xdm/infra/member/memberXdmForm";
 	}
 	
-	// 회원정보 기입 (=회원가입)
+	// 사용자 인터페이스에서 회원가입으로 회원정보 기입
 	@RequestMapping("/memberUsrView")
 	public String memberUsrView(MemberVo vo, Model model){
 		Member member = service.selectOneUserInfo(vo);
