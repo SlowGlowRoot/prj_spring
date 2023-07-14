@@ -82,14 +82,14 @@
     ) 
     </insert>
     
-    <select id="selectOneUserInfo" resultMap="resultMapMember">
-    	SELECT
-			COUNT(seq)
-    	FROM
-    		userInfo
-    	WHERE 1=1
-    		AND userName = #{userName}
+<!--     <select id="selectOneUserInfo" resultMap="resultMapMember"> -->
+<!--     	SELECT -->
+<!-- 			COUNT(seq) -->
+<!--     	FROM -->
+<!--     		userInfo -->
+<!--     	WHERE 1=1 -->
+<!--     		AND userName = #{userName} -->
 <!--     		UserName이라는 모시꺵이는 없다. 만들어라, 일해라! -->
-    </select>
+<!--     </select> -->
 
 </mapper>
